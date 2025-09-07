@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="profile">
+    <img src="foto.jpg" alt="Foto Profil" class="profile-pic">
+    <h1>Abdullah Wijaya</h1>
+    <p>Pelajar tau ah males mau beli baso</p>
+    <div class="social-links">
+      <a href="https://instagram.com/yourself33a" target="_blank">Instagram</a>
+      <a href="https://wa.me/6283898770783" target="_blank">WhatsApp</a>
+      <a href="mailto:abdulahwijaya6@gmail.com">Email</a>
+    </div>
+  </section>
+
+  <section class="certificates">
+    <h2>📄 Sertifikat</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <h3>cisco dasar</h3>
+        <button onclick="viewCert('sertifikat1.pdf')">Lihat Sertifikat</button>
+      </div>
+      <div class="cert-item">
+        <h3>jaringan dasar</h3>
+        <button onclick="viewCert('sertifikat2.pdf')">Lihat Sertifikat</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <iframe id="certFrame" src="" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
