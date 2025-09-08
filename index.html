@@ -2,45 +2,81 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Profil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil Abdullah Wijaya</title>
+  <!-- Font Awesome untuk ikon sosial media -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="profile">
-    <img src="foto.jpg" alt="Foto Profil" class="profile-pic">
-    <h1>Abdullah Wijaya</h1>
-    <p>Pelajar tau ah males mau beli baso</p>
-    <div class="social-links">
-      <a href="https://instagram.com/yourself33a" target="_blank">Instagram</a>
-      <a href="https://wa.me/6283898770783" target="_blank">WhatsApp</a>
-      <a href="mailto:abdulahwijaya6@gmail.com">Email</a>
-    </div>
-  </section>
+  <!-- Preloader -->
+  <div id="preloader" aria-label="Loading">
+    <div class="loader"></div>
+  </div>
 
-  <section class="certificates">
-    <h2>📄 Sertifikat</h2>
-    <div class="cert-list">
-      <div class="cert-item">
-        <h3>cisco dasar</h3>
-        <button onclick="viewCert('sertifikat1.pdf')">Lihat Sertifikat</button>
-      </div>
-      <div class="cert-item">
-        <h3>jaringan dasar</h3>
-        <button onclick="viewCert('sertifikat2.pdf')">Lihat Sertifikat</button>
-      </div>
+  <!-- Intro animasi -->
+  <div id="intro" aria-label="Intro animation" role="banner">
+    <h1 class="hello-text">Hello</h1>
+    <div class="wind-elements" aria-hidden="true">
+      <span class="wind wind1"></span>
+      <span class="wind wind2"></span>
+      <span class="wind wind3"></span>
     </div>
-  </section>
+  </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
+  <!-- Konten utama -->
+  <div id="main-content" aria-hidden="true">
+    <section class="profile" role="main">
+      <div class="profile-pic-container">
+        <img src="foto.jpg" alt="Foto Profil Abdullah Wijaya" class="profile-pic" />
+        <div class="crown-wrapper" aria-hidden="true">
+          <svg class="crown" viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" >
+            <path d="M2 44h60L50 4l-10 20-10-20-12 40z"/>
+            <circle cx="14" cy="14" r="4"/>
+            <circle cx="32" cy="8" r="4"/>
+            <circle cx="50" cy="14" r="4"/>
+          </svg>
+          <div class="crown-frame"></div>
+        </div>
+      </div>
+      <h1>Abdullah Wijaya</h1>
+      <p class="bio">Pelajar tau ah males mau beli baso</p>
+      <nav class="social-links" role="navigation" aria-label="Sosial Media">
+        <a href="https://instagram.com/yourself33a" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/6283898770783" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:abdulahwijaya6@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </nav>
+    </section>
+
+    <section class="certificates" aria-labelledby="certTitle">
+      <h2 id="certTitle">📄 Sertifikat</h2>
+      <div class="cert-list">
+        <div class="cert-item">
+          <h3>Cisco Dasar</h3>
+          <button class="btn" onclick="viewCert('sertifikat1.pdf')" aria-label="Lihat Sertifikat Cisco Dasar">Lihat Sertifikat</button>
+        </div>
+        <div class="cert-item">
+          <h3>Jaringan Dasar</h3>
+          <button class="btn" onclick="viewCert('sertifikat2.pdf')" aria-label="Lihat Sertifikat Jaringan Dasar">Lihat Sertifikat</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Sertifikat -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <iframe id="certFrame" src="" frameborder="0"></iframe>
+      <button class="close" onclick="closeModal()" aria-label="Tutup">&times;</button>
+      <iframe id="certFrame" src="" frameborder="0" title="Sertifikat" allowfullscreen></iframe>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
