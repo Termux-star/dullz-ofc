@@ -1,118 +1,260 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
+/* Reset dan basic */
+* {
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
-  color: #333;
+  box-sizing: border-box;
 }
 
-section {
-  padding: 40px 20px;
-  text-align: center;
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f0f0, #333);
+  color: #222;
+  overflow-x: hidden;
 }
 
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Intro animation */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fff, #ccc);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
+  user-select: none;
+}
+
+.hello-text {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #222;
+  animation: fadeInUp 3s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Wind elements for decor */
+.wind {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: #888;
+  margin: 0 5px;
+  opacity: 0.5;
+  animation: windMove 2s ease-in-out infinite alternate;
+}
+
+.wind1 { animation-delay: 0s; }
+.wind2 { animation-delay: 0.3s; }
+.wind3 { animation-delay: 0.6s; }
+
+@keyframes windMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(10px); }
+}
+
+/* Animasi keluar intro */
+@keyframes introExitAnim {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.intro-exit {
+  animation: introExitAnim 1s forwards;
+}
+
+/* Main content */
+#main-content {
+  opacity: 0;
+  transition: opacity 1s ease;
+  padding: 20px;
+  max-width: 600px;
+  margin: 60px auto;
+}
+
+#main-content.show {
+  opacity: 1;
+}
+
+/* Profile */
 .profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-pic-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 10px #0003;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+}
+
+.crown-wrapper {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+}
+
+.crown {
+  fill: gold;
+  filter: drop-shadow(0 0 2px #b8860b);
+}
+
+/* Bio */
+.bio {
+  font-style: italic;
+  color: #555;
   margin-bottom: 15px;
 }
 
+/* Social links */
 .social-links a {
   margin: 0 10px;
-  text-decoration: none;
-  color: #fff;
-  background: #000;
-  padding: 10px 16px;
-  border-radius: 6px;
-  transition: background 0.3s;
+  color: #333;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-  background: #444;
+  color: #0077ff;
 }
 
+/* Sertifikat */
 .certificates {
-  background: #f9f9f9;
+  margin-top: 40px;
 }
 
 .cert-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 20px;
+  justify-content: center;
 }
 
 .cert-item {
   background: #fff;
-  padding: 20px;
   border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  box-shadow: 0 0 8px #0002;
+  width: 200px;
+  text-align: center;
 }
 
 .cert-item h3 {
   margin-bottom: 10px;
 }
 
-.cert-item button {
-  background: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
+.btn {
   cursor: pointer;
+  background-color: #0077ff;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
-.cert-item button:hover {
-  background: #0056b3;
+.btn:hover {
+  background-color: #005bb5;
 }
 
-/* Modal Styling */
+/* Modal Sertifikat */
 .modal {
-  display: none;
   position: fixed;
-  z-index: 99;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  inset: 0;
   background-color: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.modal.show {
+  display: flex;
 }
 
 .modal-content {
   position: relative;
-  margin: 5% auto;
   width: 90%;
   max-width: 800px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  height: 90vh;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px #0008;
 }
 
 .modal-content iframe {
   width: 100%;
-  height: 500px;
+  height: 100%;
+  border: none;
 }
 
 .close {
   position: absolute;
   top: 10px;
-  right: 16px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #aaa;
+  right: 10px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
+  line-height: 1;
+  transition: background-color 0.3s ease;
 }
 
 .close:hover {
-  color: #000;
+  background-color: #cc0000;
 }
